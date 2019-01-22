@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
+    mode: 'development',
     entry: [
         'react-hot-loader/patch',
         './src/index.jsx',
@@ -11,10 +12,7 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                use: [
-                    'babel-loader',
-                    'eslint-loader',
-                ],
+                loader: ['babel-loader', 'eslint-loader'],
             },
             {
                 test: /\.scss$/,
@@ -39,6 +37,7 @@ module.exports = {
         filename: 'bundle.js',
     },
     plugins: [
+        new webpack.LoaderOptionsPlugin({ options: {} }),
         new webpack.HotModuleReplacementPlugin(),
     ],
     devServer: {

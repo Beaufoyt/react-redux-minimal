@@ -8,24 +8,15 @@ import { switchTool } from '../actions/workshop';
 import PureComponent from './PureComponent';
 
 class App extends PureComponent {
-    setTool = (e) => {
-        console.log('made it', e.target.name);
-        this.props.switchTool('line');
-    }
-
     isActive = (key) => {
-        return key === this.props.tool;
+        const { tool } = this.props;
+        return key === tool;
     }
 
     render() {
         return (
-            <div className="sidebar">
-                <button
-                    name="line"
-                    onClick={this.setTool}
-                    className={`btn btn-success ${this.isActive('line') ? 'active' : ''}`}>
-                    Line
-                </button>
+            <div className="header">
+                <h3>Admin Panel</h3>
             </div>
         );
     }
@@ -33,7 +24,6 @@ class App extends PureComponent {
 
 App.propTypes = {
     tool: PropTypes.string,
-    switchTool: PropTypes.func.isRequired,
 };
 
 App.defaultProps = {
